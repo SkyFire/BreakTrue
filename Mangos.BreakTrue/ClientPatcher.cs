@@ -12,6 +12,12 @@ namespace Mangos.BreakTrue
                 0x83, 0xE1, 0x01, 0x80, 0xBC, 0x31, null, null, 0x00, 0x00,
             };
 
+        private static readonly byte?[] _connectionIndexCheckPattern =
+            {
+                0x0F, 0x85, null, null, null, null, 0x8B, 0x4D, 0x10, 0x8B,
+                0x55, 0x08, 0x53, 0x51, 0x8B, 0x8F, null, null, null, null,
+            };
+
         private static readonly byte?[] _emailCheckPattern =
             {
                 0x74, null, 0xBE, 0x01, 0x00, 0x00, 0x00, 0x8B, 0x0D, null,
@@ -64,6 +70,9 @@ namespace Mangos.BreakTrue
         public bool Patch()
         {
             if (!Patch("Connection index selection", _connectionIndexPattern, new byte[] { 0xB8, 0x00, 0x00, 0x00, 0x00 }))
+                return false;
+
+            if (!Patch("Connection index check", _connectionIndexCheckPattern, new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90 }))
                 return false;
 
             if (!Patch("Grunt/Battle.net selection", _emailCheckPattern, new byte[] { 0xEB }))
