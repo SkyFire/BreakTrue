@@ -1,0 +1,7 @@
+== MaNGOS BreakTrue ==
+
+This is a binary patching tool that will aid in making WoW 4.x playable on
+unofficial servers, by patching out the server redirection (which involves
+the RSA algorithm).
+
+To run it: Mangos.BreakTrue.exe Wow.exe (Be sure to back up Wow.exe first!)
