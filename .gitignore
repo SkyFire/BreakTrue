@@ -1,4 +1,7 @@
-*/bin/*
-*/obj/*
+bin/*
 *.user
 *.suo
+*.ncb
+*.sdf
+*.sln.cache
+ipch
